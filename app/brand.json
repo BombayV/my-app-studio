@@ -1,16 +1,20 @@
 {
-  "name": "Your Project",
-  "audience": "Not chosen yet",
-  "archetype": "Not chosen yet",
-  "promise": "Not chosen yet",
-  "headline": "A small idea. A real application.",
-  "summary": "This working page is your starting point. Give it a purpose and a brand, then build accounts and permissions one feature at a time.",
-  "voice": ["Not chosen yet"],
-  "design_direction": "Not chosen yet",
+  "name": "MSR26 CMS",
+  "audience": "Students finding assignment links and contacting professors when they need help.",
+  "archetype": "Sage — a clear, helpful guide",
+  "promise": "Your coursework and professor contacts, in one place.",
+  "headline": "Less searching. More studying.",
+  "summary": "Find your next assignment. Know who to ask. A student-first home for the links and conversations that keep your semester moving.",
+  "voice": [
+    "clear",
+    "helpful",
+    "organized"
+  ],
+  "design_direction": "An organized student field guide: navy ink, warm paper, teal accents, generous spacing and clearly separated task sections. AI-proposed visual direction for the agreed Sage identity.",
   "palette": {
-    "ink": "#182C34",
-    "paper": "#F6F5EF",
-    "accent": "#285A50",
+    "ink": "#172D38",
+    "paper": "#F7F6F2",
+    "accent": "#236354",
     "surface": "#FFFFFF"
   }
 }

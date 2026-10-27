@@ -7,9 +7,9 @@ actual evidence; pending is a valid state. Keep explanations/help in
 ## Current stage
 
 - **Current feature:** APP-001.
-- **Status:** Neutral foundation; learner scope and decisions pending.
-- **Next step:** Confirm the local clone and SSH origin, run setup and try the page.
-- **Implementation marker:** `studio.json` starts at `implemented_through: 0`.
+- **Status:** APP-001 homepage implemented; full local checks and AI layout/keyboard review passed. Learner requested keeping the result and moving on; approved summary records the remaining interpretation/observation gaps. GitHub completion pending.
+- **Next step:** Publish the reviewed APP-001 PR, verify both CI jobs and review for merge.
+- **Implementation marker:** `studio.json` is `implemented_through: 1`, set only after explicit APP-001 checks passed; normal full checks then passed again.
 
 This repository owns application code. Server/proxy changes and production
 deployment are outside these three local-development lessons. Prepared helpers
@@ -23,10 +23,10 @@ Keep account actions honest about their unfinished state.
 
 | Decision | Agreement |
 |---|---|
-| Visitor and concrete use situation | Pending |
-| Reused IS117 brand, or name / promise / primary archetype | Pending |
-| One visible choice and visitor benefit | Pending |
-| Own issue / branch / PR | Pending |
+| Visitor and concrete use situation | Students finding important assignment links; when an issue arises, finding how to contact a professor. |
+| Reused IS117 brand, or name / promise / primary archetype | MSR26 CMS; “Your coursework and professor contacts, in one place.” Clear, helpful Sage/guide identity (AI suggestion adopted by learner). |
+| One visible choice and visitor benefit | Separate Assignments and Professor contacts sections so students can handle work and find help. Learner clarified the intended contact is a professor. AI-proposed navy/cream/teal field-guide styling and original book/bookmark SVG. Informational homepage only: no actual email sending or stored assignment links. Learner expected the original CTA to open `/register`; approved renaming it “Explore the planned tools” to clarify the current in-page destination. |
+| Own issue / branch / PR | [APP-001 issue #1](https://github.com/BombayV/my-app-studio/issues/1); `codex/app-001-msr26-homepage`; PR pending. |
 
 **Keep when:** the agreed identity is visible and usable at desktop/narrow widths;
 full foundation + APP-001 checks pass; AI review and the learner's actual check
@@ -81,7 +81,7 @@ customer research or claims that a timestamp proves learning.
 
 | Feature | Files / own issue / PR | Actual checks and learner observations | Kept / GitHub state |
 |---|---|---|---|
-| APP-001 | Pending | Not run; learner contributions pending | Pending |
+| APP-001 | [Issue #1](https://github.com/BombayV/my-app-studio/issues/1); [brand brief](app/brand.json), [homepage](app/templates/home.html), [shared navigation](app/templates/base.html), [styles](app/static/site.css), [SVG mark](app/static/logo.svg). PR pending. | Full `check --lesson APP-001`, then normal `check` after marker update: Black/Pylint, 98 foundation tests, 2 homepage contracts, 2 Chromium journeys passed. AI reviewed 1280px desktop and 390px narrow rendering/keyboard/anchor behavior. Learner saw the neutral navbar, hero, footer and CTA, and predicted separate work/contact sections would help students. Learner reported “Everything looks good” and requested moving on. Specific branded-page observation and independent check interpretation remain unrecorded in the approved summary. | Learner authorized keep/publication; PR, both CI jobs and merge pending. |
 | APP-002 | Pending | Unfinished; explicit contracts not yet passed | Pending |
 | APP-003 | Pending | Unfinished; explicit contracts not yet passed | Pending |
 

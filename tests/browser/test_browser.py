@@ -201,3 +201,54 @@ def test_account_forms_on_a_narrow_screen(page, server, path, heading, action):
         )
         >= 44
     )
+
+
+@pytest.mark.parametrize(
+    "role, width, status, heading",
+    [
+        ("member", 390, 403, "Admin access required"),
+        ("admin", 1280, 200, "Administration"),
+        ("admin", 390, 200, "Administration"),
+    ],
+)
+def test_role_pages_render_the_current_permission(
+    page, server, role, width, status, heading
+):
+    """Render real allowed/denied pages with isolated accounts and trusted CLI roles."""
+    username = "role_view_" + uuid.uuid4().hex[:8]
+    credentials = {
+        "username": username,
+        "password": "a disposable role view passphrase",
+    }
+    token = page.request.get(server.url + "/api/csrf").json()["csrf_token"]
+    headers = {"X-CSRF-Token": token}
+    assert (
+        page.request.post(
+            server.url + "/api/signup", data=credentials, headers=headers
+        ).status
+        == 201
+    )
+    assert (
+        page.request.post(
+            server.url + "/api/login", data=credentials, headers=headers
+        ).status
+        == 200
+    )
+    if role == "admin":
+        subprocess.run(
+            [sys.executable, "studio.py", "user", "role", username, "--role", "admin"],
+            cwd=ROOT,
+            env=server.environment,
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+    page.set_viewport_size({"width": width, "height": 900})
+    response = page.goto(server.url + "/admin")
+    assert response.status == status
+    expect(page.get_by_role("heading", name=heading, exact=True)).to_be_visible()
+    assert page.evaluate("document.documentElement.scrollWidth <= window.innerWidth")
+    if role == "member":
+        expect(page.get_by_text("Access overview", exact=True)).to_have_count(0)
+    else:
+        expect(page.get_by_text("Access overview", exact=True)).to_be_visible()

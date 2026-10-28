@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}{{ 'Administration' if allowed else 'Admin access required' }} · {{ brand.name }}{% endblock %}
+{% block content %}
+<section class="access-panel" aria-labelledby="access-title">
+  <p class="eyebrow">MSR26 / {{ 'Administration' if allowed else 'Access boundary' }}</p>
+  {% if allowed %}
+  <h1 id="access-title">Administration</h1>
+  <p class="lede">Admin access confirmed, {{ user.username }}.</p>
+  <p class="access-intro">This read-only area is available to administrators. Your member dashboard is still available.</p>
+  <div class="tool-grid access-grid">
+    <article class="tool-card"><span class="feature-status">Admin only</span><h2>Access overview</h2><dl class="access-details"><dt>Signed in as</dt><dd>{{ user.username }}</dd><dt>Current role</dt><dd>{{ user.role }}</dd></dl></article>
+    <article class="tool-card"><p class="eyebrow">Permissions stay on the server</p><h2>A trusted boundary.</h2><p>Roles are managed through the trusted local command. This page has no role-changing control.</p><p>After a role change, refresh to make a new request. An already open page does not update itself.</p></article>
+  </div>
+  {% else %}
+  <h1 id="access-title">Admin access required</h1>
+  <p class="lede">You're signed in as {{ user.username }}.</p>
+  <p class="access-intro">Your member account can use the student dashboard, but this area requires an administrator role.</p>
+  <p class="notice">Your account is still signed in. You can return to your member space.</p>
+  {% endif %}
+  <div class="access-actions"><a class="button" href="/dashboard">Back to member space <span aria-hidden="true">↗</span></a><form action="/logout" method="post"><input type="hidden" name="csrf_token" value="{{ csrf_token }}"><button class="text-button" type="submit">Log out</button></form></div>
+</section>
+{% endblock %}

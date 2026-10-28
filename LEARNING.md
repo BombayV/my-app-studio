@@ -19,13 +19,13 @@ Accuracy approval is not proof of understanding. Label simulated trials explicit
 
 ## APP-002
 
-- Prediction: Pending.
-- Check interpretation: Pending.
-- Browser observation: Pending.
-- Keep decision: Pending.
-- Review: Pending.
-- Help/gaps: Pending.
-- Evidence links / next step: Keep APP-001 before agreeing this lesson.
+- Prediction: Learner expected protected pages without a valid session to redirect to login. Initially proposed JWT storage in localStorage or cookies; AI clarified that the signing key stays server-side and this app uses the prepared HttpOnly cookie. Learner agreed that valid sessions reach private pages, while unauthenticated APIs return 401.
+- Check interpretation: Learner suggested a cache/expiration issue when asked about a copied pre-logout cookie still receiving 200. AI clarified that the check tests server-side session rejection after logout, even when the token is retained.
+- Browser observation: After the requested signup/login/dashboard/logout/revisit exercise, learner reported: “You get redirected to login.”
+- Keep decision: Learner chose to keep the flow because someone returning to a protected page may already have an account and can log in again (labeled paraphrase).
+- Review: Learner approved this APP-002 summary before publication on 2026-10-28: “Yes.”
+- Help/gaps: AI connected the prepared security helpers to forms and APIs, ran full checks and reviewed account layouts. AI supplied the server-revocation explanation; independent articulation of that explanation was not recorded. No password, cookie value or signing key is recorded.
+- Evidence links / next step: [Issue #3](https://github.com/BombayV/my-app-studio/issues/3), [SPEC.md](SPEC.md). Full local APP-002 checks passed; publish the reviewed PR, verify both CI jobs, then obtain the learner's merge decision.
 
 ## APP-003
 

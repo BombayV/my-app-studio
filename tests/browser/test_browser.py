@@ -176,3 +176,28 @@ def _check_role_boundary(page, server, username):
             expect(
                 page.get_by_role("heading", name="Administration", exact=True)
             ).to_be_visible()
+
+
+@pytest.mark.parametrize(
+    "path, heading, action",
+    [("/signup", "Create account", "Create account"), ("/login", "Log in", "Log in")],
+)
+def test_account_forms_on_a_narrow_screen(page, server, path, heading, action):
+    """Keep both account entry points usable with keyboard and a narrow viewport."""
+    page.set_viewport_size({"width": 390, "height": 844})
+    page.goto(server.url + path)
+    expect(page.get_by_role("heading", name=heading, exact=True)).to_be_visible()
+    page.keyboard.press("Tab")
+    expect(page.get_by_role("link", name="Skip to content")).to_be_focused()
+    page.keyboard.press("Enter")
+    expect(page.locator("#main")).to_be_focused()
+    assert page.evaluate("document.documentElement.scrollWidth <= window.innerWidth")
+    expect(page.get_by_label("Username", exact=True)).to_be_visible()
+    password = page.get_by_label("Password", exact=True)
+    expect(password).to_have_attribute("type", "password")
+    assert (
+        page.get_by_role("button", name=action, exact=True).evaluate(
+            "element => element.getBoundingClientRect().height"
+        )
+        >= 44
+    )

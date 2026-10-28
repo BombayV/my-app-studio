@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Your member space · {{ brand.name }}{% endblock %}
+{% block content %}
+<section class="member-heading" aria-labelledby="member-title">
+  <div><p class="eyebrow">MSR26 / Private dashboard</p><h1 id="member-title">Your member space</h1><p class="lede">Welcome, {{ user.username }}.</p><p>You're signed in. This space is available only with a valid session.</p></div>
+  <form action="/logout" method="post"><input type="hidden" name="csrf_token" value="{{ csrf_token }}"><button class="button" type="submit">Log out</button></form>
+</section>
+<section class="tool-grid member-tools" aria-label="Planned student tools">
+  <article class="tool-card"><div class="card-top"><span class="section-number">01 / THE WORK</span><span class="feature-status">Planned feature</span></div><h2>Assignments</h2><p>Your assignment-link space is still to come. No links have been saved here.</p><a class="text-link" href="/#assignments">About assignment links →</a></article>
+  <article class="tool-card"><div class="card-top"><span class="section-number">02 / THE HELP</span><span class="feature-status">Planned feature</span></div><h2>Professor contacts</h2><p>Contact management and sending emails are not available yet.</p><a class="text-link" href="/#professor-contacts">About professor contacts →</a></article>
+</section>
+{% endblock %}

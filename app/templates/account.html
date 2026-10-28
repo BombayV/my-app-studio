@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% set signup = mode == 'signup' %}
+{% block title %}{{ 'Create account' if signup else 'Log in' }} · {{ brand.name }}{% endblock %}
+{% block content %}
+<section class="auth-layout" aria-labelledby="account-title">
+  <div class="auth-card form-stack">
+    <p class="eyebrow">{{ 'A fresh start for your semester' if signup else 'Welcome back' }}</p>
+    <h1 id="account-title">{{ 'Create account' if signup else 'Log in' }}</h1>
+    <p class="auth-intro">{{ 'Make a member account for your own student space.' if signup else 'Your student space is one step away.' }}</p>
+    {% if error %}<p id="form-error" role="alert">{{ error }}</p>{% endif %}
+    <form action="/{{ mode }}" method="post"{% if error %} aria-describedby="form-error"{% endif %}>
+      <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+      <label for="username">Username</label>
+      <input id="username" name="username" type="text" autocomplete="username" minlength="{{ 3 if signup else 1 }}" maxlength="32" value="{{ username }}" required{% if signup %} pattern="[A-Za-z0-9_]{3,32}" aria-describedby="username-help"{% endif %}>
+      {% if signup %}<p id="username-help" class="field-help">3–32 letters, numbers or underscores. No email address needed.</p>{% endif %}
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password" autocomplete="{{ 'new-password' if signup else 'current-password' }}" minlength="{{ 15 if signup else 1 }}" maxlength="128" required{% if signup %} aria-describedby="password-help"{% endif %}>
+      {% if signup %}<p id="password-help" class="field-help">Use 15–128 characters. For this local preview, use a throwaway passphrase.</p>{% endif %}
+      <button class="button" type="submit">{{ 'Create account' if signup else 'Log in' }} <span aria-hidden="true">↗</span></button>
+    </form>
+    <p class="account-switch">{{ 'Already have an account?' if signup else 'New here?' }} <a href="{{ '/login' if signup else '/signup' }}">{{ 'Log in' if signup else 'Create account' }}</a></p>
+  </div>
+  <aside class="account-guide" aria-labelledby="guide-title">
+    <p class="eyebrow">MSR26 / Your student space</p>
+    <h2 id="guide-title">A little more<br>room to focus.</h2>
+    <p>One place to begin your semester, with a private member space behind your login.</p>
+    <div class="guide-line"><span>01</span><p>Create a member account.</p></div>
+    <div class="guide-line"><span>02</span><p>Log in to your private dashboard.</p></div>
+    <div class="guide-line"><span>03</span><p>Log out when you're finished.</p></div>
+    <p class="field-help">Assignment links and professor email tools are still planned features.</p>
+  </aside>
+</section>
+{% endblock %}

@@ -29,10 +29,10 @@ Accuracy approval is not proof of understanding. Label simulated trials explicit
 
 ## APP-003
 
-- Prediction: Pending.
-- Check interpretation: Pending.
-- Browser observation: Pending.
-- Keep decision: Pending.
-- Review: Pending.
-- Help/gaps: Pending.
-- Evidence links / next step: Keep APP-002 before agreeing this lesson.
+- Prediction: Learner predicted 403 for a member requesting the admin API directly; clarified that the earlier 401 was an unrelated typing mistake.
+- Check interpretation: “It checks for permissions and returns different html depending on the role.”
+- Browser observation: On the public CMS, learner saw “Admin access required” as a member, then their username and current role “admin” after trusted promotion, then “admin access required” again after restoration to member without logging out. Learner also observed planned dashboard features linking to the homepage.
+- Keep decision: “Yes because it allows the user to know what role it has.” Learner also chose to retain the planned-feature dashboard.
+- Review: Learner approved the APP-003 summary before publication on 2026-10-28: “Yes.”
+- Help/gaps: AI implemented and checked the role boundary, explained the HTTP statuses, and temporarily changed the named test account through the trusted server-side helper for the requested public comparison, then restored member access. This comparison happened on the separately agreed public deployment. AI drafted this reviewed summary; no password or session value is recorded.
+- Evidence links / next step: [Issue #5](https://github.com/BombayV/my-app-studio/issues/5), [SPEC.md](SPEC.md), [public deployment checks](deploy/cms/evidence.json). Full local APP-003 checks passed. Review the diff, publish the PR and verify both CI jobs before a merge decision.

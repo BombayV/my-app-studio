@@ -1,0 +1,47 @@
+{
+  "checked_at": "2026-10-28T14:09:26.386269+00:00",
+  "public_url": "https://cms.bombayv.com",
+  "public_checks": {
+    "/": 200,
+    "/health": 200,
+    "/login": 200,
+    "/dashboard": 303,
+    "/api/me": 401,
+    "/api/admin": 401,
+    "/static/deployment.json": 200,
+    "source": {
+      "source_id": "1e107628c66e73477328b80a0f257208171f3fd6b257f37c3c1adaa3008f9d8d",
+      "source_kind": "tested-uncommitted-APP-003-working-tree",
+      "base_commit": "ffd7bc51f97588627d598ebe93a972f548b5645f",
+      "implemented_through": 3
+    },
+    "member /dashboard": 200,
+    "member /api/me": 200,
+    "member /admin": 403,
+    "member /api/admin": 403,
+    "signup": 201,
+    "login": 200,
+    "secure_httponly_cookie": true,
+    "logout": 200,
+    "revoked_cookie_replay": 401
+  },
+  "preservation": {
+    "existing_container_identity_start_ports_unchanged": true,
+    "existing_route_hashes_unchanged": true,
+    "cms_health": "healthy",
+    "cms_image_id": "sha256:fdddcd7911a94fe7318b1f89db630bf6550ef2b1f3061d943f9c440bd7275c63",
+    "cms_published_ports": {},
+    "cms_nonroot": "10001:10001",
+    "cms_readonly": true,
+    "cms_connection_limit": 8,
+    "cms_keepalive_seconds": 2
+  },
+  "existing_calculator_public_health": 200,
+  "limitations": [
+    "Tested uncommitted APP-003 working snapshot; no APP-003 PR/CI completion claimed.",
+    "AI browser observation supplements learner inspection.",
+    "Initial connection limit 3 returned login 503; corrected runtime override to 8 with 2-second keepalive; repeated public checks passed.",
+    "Small VM exhibited slow startup and transient calculator timeout during build; final CMS and calculator public health returned 200."
+  ],
+  "disposable_verification_account_removed": true
+}
